@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/Page/Gridpage/eKTP/StatusPage.dart';
+import 'package:myapp/Page/Gridpage/Imunisasi/StatusPage.dart';
 import 'package:myapp/Page/my_Homepage.dart';
-import './e_ktp_page.dart';
 
-class EKTPOptionpage extends StatelessWidget {
-  const EKTPOptionpage({super.key});
+
+
+class AllStatusPage extends StatelessWidget {
+  const AllStatusPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('e-KTP'),
+        title: Text('Cek Status'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -26,22 +28,23 @@ class EKTPOptionpage extends StatelessWidget {
             ListTile(
               leading: Image.asset(
                   'assets/icon/ektpIcon.png'), // Replace with your asset image
-              title: Text('Formulir Pendaftaran KTP'),
+              title: Text('Cek Status Pendaftaran KTP'),
               onTap: () {
                 //navigasi
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => EKTPPage()),
+                  MaterialPageRoute(builder: (context) => StatusPageEKTP()),
                 );
               },
             ),
             SizedBox(height: 16.0),
             ListTile(
-              leading: Icon(Icons.check_circle, color: Colors.green),
-              title: Text('Cek Status Pendaftaran'),
+              leading: Image.asset(
+                  'assets/icon/imunisasiIcon.png'),
+              title: Text('Cek Status Pendaftaran Imunisasi'),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => StatusPageEKTP()));
+                    MaterialPageRoute(builder: (context) => StatusPageImunisasi()));
               },
             ),
           ],

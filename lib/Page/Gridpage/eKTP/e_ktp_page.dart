@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/Page/my_Homepage.dart';
 import 'SecondPage.dart';
 
 void main() {
@@ -8,7 +9,7 @@ void main() {
 }
 
 class EKTPPage extends StatefulWidget {
-  const EKTPPage({Key? key}) : super(key: key);
+  const EKTPPage({super.key});
 
   @override
   _EKTPPageState createState() => _EKTPPageState();
@@ -42,6 +43,15 @@ class _EKTPPageState extends State<EKTPPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Formulir Pembuatan E-KTP'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            // Handle back button press
+            Navigator.push(
+              context, 
+              MaterialPageRoute(builder: (context) => const MyHomePage()));
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -54,7 +64,7 @@ class _EKTPPageState extends State<EKTPPage> {
                   children: [TextFormField(
                   decoration: InputDecoration(
                     labelText: fieldLabels[index], 
-                    border: OutlineInputBorder()),
+                    border: const OutlineInputBorder()),
                   // validator: (value) {
                   //   if (value == null || value.isEmpty) {
                   //     return 'Harap Isi Kolom ${fieldLabels[index]}';
@@ -68,7 +78,7 @@ class _EKTPPageState extends State<EKTPPage> {
                   },
                 ),
                 if (index< fieldLabels.length - 1)
-                Divider(
+                const Divider(
                   height: 15,
                 )
                 ],);
@@ -111,8 +121,8 @@ class _EKTPPageState extends State<EKTPPage> {
               const Text('Golongan Darah:'),
               GridView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, // Number of columns
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 10,
@@ -143,7 +153,7 @@ class _EKTPPageState extends State<EKTPPage> {
                 onPressed: navigateToNextPage,
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
-                  backgroundColor: Color.fromRGBO(255, 109, 2, 1),
+                  backgroundColor: const Color.fromRGBO(255, 109, 2, 1),
                   padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                   textStyle: const TextStyle(
                     fontSize: 22,

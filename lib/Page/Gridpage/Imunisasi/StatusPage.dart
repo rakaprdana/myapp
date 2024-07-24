@@ -4,18 +4,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math';
 
 void main() {
-  runApp(const StatusPageEKTP());
+  runApp(const StatusPageImunisasi());
 }
 
 
-class StatusPageEKTP extends StatefulWidget {
-  const StatusPageEKTP({Key? key}) : super(key: key);
+class StatusPageImunisasi extends StatefulWidget {
+  const StatusPageImunisasi({Key? key}) : super(key: key);
 
   @override
   _StatusPageState createState() => _StatusPageState();
 }
 
-class _StatusPageState extends State<StatusPageEKTP> {
+class _StatusPageState extends State<StatusPageImunisasi> {
   late int _randomCode;
 
   @override
@@ -27,7 +27,7 @@ class _StatusPageState extends State<StatusPageEKTP> {
   void _generateRandomCode() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      _randomCode = Random().nextInt(9000) + 1000;
+      _randomCode = Random().nextInt(12345) + 10000;
     });
     await prefs.setInt('saved_code', _randomCode);
   }
@@ -35,7 +35,7 @@ class _StatusPageState extends State<StatusPageEKTP> {
   void _loadCode() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      _randomCode = prefs.getInt('saved_code') ?? Random().nextInt(9000) + 1000;
+      _randomCode = prefs.getInt('saved_code') ?? Random().nextInt(12345) + 10000;
     });
     if (!prefs.containsKey('saved_code')) {
       await prefs.setInt('saved_code', _randomCode);
@@ -46,7 +46,7 @@ class _StatusPageState extends State<StatusPageEKTP> {
    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('e-KTP'),
+        title: const Text('Imunisasi'),
       ),
       body: Stack(
         children: [
@@ -91,10 +91,12 @@ class _StatusPageState extends State<StatusPageEKTP> {
                         const SizedBox(height: 10),
                         const Text(
                           'Pendaftaran Berhasil',
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          
                         ),
                         const SizedBox(height: 10),
-                        const Text('Tunjukkan Kode ke Administrasi'),
+                        const Text(
+                          'Tunjukkan Kode ke Administrasi',
+                          ),
                         const SizedBox(height: 10),
                         Text(
                           '$_randomCode',

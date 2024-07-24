@@ -28,7 +28,7 @@ class _ThirdPageState extends State<ThirdPage> {
     if (formKey.currentState!.validate()) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => StatusPage()),
+        MaterialPageRoute(builder: (context) => StatusPageEKTP()),
       );
     }
   }

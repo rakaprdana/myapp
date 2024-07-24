@@ -1,52 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/Page/my_Homepage.dart'; 
-import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:math';
 
 void main() {
-  runApp(const StatusPageEKTP());
+  runApp(const StatusPageLaporan());
 }
 
-
-class StatusPageEKTP extends StatefulWidget {
-  const StatusPageEKTP({Key? key}) : super(key: key);
+class StatusPageLaporan extends StatefulWidget {
+  const StatusPageLaporan({Key? key}) : super(key: key);
 
   @override
   _StatusPageState createState() => _StatusPageState();
 }
 
-class _StatusPageState extends State<StatusPageEKTP> {
-  late int _randomCode;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadCode();
-  }
-
-  void _generateRandomCode() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _randomCode = Random().nextInt(9000) + 1000;
-    });
-    await prefs.setInt('saved_code', _randomCode);
-  }
-
-  void _loadCode() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _randomCode = prefs.getInt('saved_code') ?? Random().nextInt(9000) + 1000;
-    });
-    if (!prefs.containsKey('saved_code')) {
-      await prefs.setInt('saved_code', _randomCode);
-    }
-  }
+class _StatusPageState extends State<StatusPageLaporan> {
+  
 
   @override
    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('e-KTP'),
+        title: const Text('Imunisasi'),
       ),
       body: Stack(
         children: [
@@ -91,15 +64,13 @@ class _StatusPageState extends State<StatusPageEKTP> {
                         const SizedBox(height: 10),
                         const Text(
                           'Pendaftaran Berhasil',
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          
                         ),
                         const SizedBox(height: 10),
-                        const Text('Tunjukkan Kode ke Administrasi'),
-                        const SizedBox(height: 10),
-                        Text(
-                          '$_randomCode',
-                          style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                        ),
+                        const Text(
+                          'Tunjukkan Kode ke Administrasi',
+                          ),
+                        
                         const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () {
