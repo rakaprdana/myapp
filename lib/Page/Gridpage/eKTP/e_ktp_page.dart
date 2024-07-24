@@ -65,12 +65,12 @@ class _EKTPPageState extends State<EKTPPage> {
                   decoration: InputDecoration(
                     labelText: fieldLabels[index], 
                     border: const OutlineInputBorder()),
-                  // validator: (value) {
-                  //   if (value == null || value.isEmpty) {
-                  //     return 'Harap Isi Kolom ${fieldLabels[index]}';
-                  //   }
-                  //   return null;
-                  // },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Harap Isi Kolom ${fieldLabels[index]}';
+                    }
+                    return null;
+                  },
                   onChanged: (value) {
                     setState(() {
                       fieldValues[index] = value;

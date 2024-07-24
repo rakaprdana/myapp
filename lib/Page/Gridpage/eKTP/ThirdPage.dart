@@ -62,12 +62,12 @@ class _ThirdPageState extends State<ThirdPage> {
                         labelText: fieldLabels[index],
                         border: OutlineInputBorder(),
                       ),
-                      // validator: (value) {
-                      //   if (value == null || value.isEmpty) {
-                      //     return 'Harap isi kolom ${fieldLabels[index]}';
-                      //   }
-                      //   return null;
-                      // },
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Harap isi kolom ${fieldLabels[index]}';
+                        }
+                        return null;
+                      },
                       onChanged: (value) {
                         setState(() {
                           fieldValues[index] = value;

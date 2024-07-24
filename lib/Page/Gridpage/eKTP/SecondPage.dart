@@ -69,12 +69,12 @@ class _SecondPage extends State<SecondPage> {
                   border: OutlineInputBorder(),
                 ),
                 maxLines: 3,
-                // validator: (value) {
-                //   if (value == null || value.isEmpty) {
-                //     return 'Harap Isi Kolom';
-                //   }
-                //   return null;
-                // },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Harap Isi Kolom';
+                  }
+                  return null;
+                },
               ),
               SizedBox(height: 20),
               Row(
